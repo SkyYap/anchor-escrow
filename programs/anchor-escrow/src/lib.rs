@@ -186,9 +186,7 @@ impl<'info> Initialize<'info> {
 }
 
 impl<'info> Cancel<'info> {
-    fn into_transfer_to_initializer_context(
-        &self,
-    ) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
+    fn into_transfer_to_initializer_context(&self) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
         let cpi_accounts = Transfer {
             from: self.vault_account.to_account_info().clone(),
             to: self.initializer_deposit_token_account.to_account_info().clone(),
@@ -208,9 +206,7 @@ impl<'info> Cancel<'info> {
 }
 
 impl<'info> Exchange<'info> {
-    fn into_transfer_to_initializer_context(
-        &self,
-    ) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
+    fn into_transfer_to_initializer_context(&self) -> CpiContext<'_, '_, '_, 'info, Transfer<'info>> {
         let cpi_accounts = Transfer {
             from: self.taker_deposit_token_account.to_account_info().clone(),
             to: self.initializer_receive_token_account.to_account_info().clone(),
